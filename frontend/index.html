@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PR Review System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="logo">⬡ PR<span>Review</span></div>
+    <nav>
+      <span id="api-status" class="status-dot offline">● API Offline</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Pull Request<br/><em>Review System</em></h1>
+      <p>Create, review, and manage pull requests across branches</p>
+    </section>
+
+    <!-- Create PR Form -->
+    <section class="card" id="create-section">
+      <h2>➕ Create New PR</h2>
+      <div class="form-row">
+        <input type="text" id="pr-title" placeholder="PR Title" />
+        <input type="text" id="pr-branch" placeholder="branch/feature-name" />
+        <input type="text" id="pr-author" placeholder="Your name" />
+        <button id="create-btn" onclick="createPR()">Create PR</button>
+      </div>
+      <div id="create-msg" class="msg"></div>
+    </section>
+
+    <!-- PR List -->
+    <section class="card">
+      <div class="section-header">
+        <h2>📋 Pull Requests</h2>
+        <button onclick="loadPRs()" class="btn-outline">↻ Refresh</button>
+      </div>
+      <div id="pr-list" class="pr-list">
+        <p class="loading">Loading PRs...</p>
+      </div>
+    </section>
+
+    <!-- PR Detail -->
+    <section class="card" id="detail-section" style="display:none">
+      <div class="section-header">
+        <h2>🔍 PR Detail</h2>
+        <button onclick="closeDetail()" class="btn-outline">✕ Close</button>
+      </div>
+      <div id="pr-detail"></div>
+      <div class="comment-box">
+        <h3>💬 Add Comment</h3>
+        <div class="form-row">
+          <input type="text" id="comment-author" placeholder="Your name" />
+          <input type="text" id="comment-text" placeholder="Write a comment..." />
+          <button onclick="addComment()">Post</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <code>Backend: http://localhost:3000</code> &nbsp;|&nbsp; PR Review System v1.0
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
