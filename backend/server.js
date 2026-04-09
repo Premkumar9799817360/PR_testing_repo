@@ -9,13 +9,15 @@ app.use(express.json());
 const prs = [
   { id: 1, title: 'Fix login bug', branch: 'feature/login-fix', status: 'open', author: 'alice', reviewers: [], comments: [] },
   { id: 2, title: 'Add dashboard UI', branch: 'feature/dashboard', status: 'open', author: 'bob', reviewers: [], comments: [] },
+  { id: 1, title: 'Fix login bug', branch: 'feature/login-fix', status: 'open', author: 'alice', reviewers: [], comments: [] },
+  { id: 2, title: 'Add dashboard UI', branch: 'feature/dashboard', status: 'open', author: 'bob', reviewers: [], comments: [] },
 ];
 
 // GET all PRs
 app.get('/api/prs', (req, res) => {
   res.json({ success: true, data: prs });
 });
-
+let ram = 2;
 // GET single PR
 app.get('/api/prs/:id', (req, res) => {
   const pr = prs.find(p => p.id === parseInt(req.params.id));
