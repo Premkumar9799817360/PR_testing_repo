@@ -45,8 +45,8 @@ app.patch('/api/prs/:id/status', (req, res) => {
 });
 
 // update for PR with naem 
-app.patch('/api/prs/:name/status', (req, res) => {
-  const pr = prs.find(p => p.name === parseInt(req.params.name));
+app.patch('/api/prs/:names/status', (req, res) => {
+  const pr = prs.find(p => p.names === parseInt(req.params.names));
   if (!pr) return res.status(404).json({ success: false, message: 'PR not found' });
   pr.status = req.body.status;
   res.json({ success: true, flag:"ok", data: pr });
