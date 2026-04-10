@@ -1,2 +1,2 @@
-asyn addFunc(a, b):
-  return a+b
+asyn addFunc(a, b,c):
+  return a+b+c
