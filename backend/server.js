@@ -9,13 +9,15 @@ app.use(express.json());
 const prs = [
   { id: 1, title: 'Fix login bug', branch: 'feature/login-fix', status: 'open', author: 'alice', reviewers: [], comments: [] },
   { id: 2, title: 'Add dashboard UI', branch: 'feature/dashboard', status: 'open', author: 'bob', reviewers: [], comments: [] },
+  { id: 1, title: 'Fix login bug', branch: 'feature/login-fix', status: 'open', author: 'alice', reviewers: [], comments: [] },
+  { id: 2, title: 'Add dashboard UI', branch: 'feature/dashboard', status: 'open', author: 'bob', reviewers: [], comments: [] },
 ];
 
 // GET all PRs
 app.get('/api/prs', (req, res) => {
   res.json({ success: true, data: prs });
 });
-
+let ram = 2;
 // GET single PR
 app.get('/api/prs/:id', (req, res) => {
   const pr = prs.find(p => p.id === parseInt(req.params.id));
@@ -42,6 +44,14 @@ app.patch('/api/prs/:id/status', (req, res) => {
   res.json({ success: true, data: pr });
 });
 
+// update for PR with naem 
+app.patch('/api/prs/:names/status', (req, res) => {
+  const pr = prs.find(p => p.names === parseInt(req.params.names));
+  if (!pr) return res.status(404).json({ success: false, message: 'PR not found' });
+  pr.status = req.body.status;
+  res.json({ success: true, flag:"ok", data: pr });
+});
+
 // POST add comment
 app.post('/api/prs/:id/comments', (req, res) => {
   const pr = prs.find(p => p.id === parseInt(req.params.id));
@@ -52,3 +62,5 @@ app.post('/api/prs/:id/comments', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Backend running on http://localhost:${PORT}`));
+
+DGDSGDHYR
