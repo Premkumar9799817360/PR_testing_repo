@@ -30,6 +30,8 @@ def login():
         return "Login Success"
     else:
         return "Invalid"
+    else:
+        return "Invalid"
 
 @app.route("/read_file")
 def read_file():
